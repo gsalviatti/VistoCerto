@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VistoCerto — Consultoria de Visto Americano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --blue: #1a56db;
+      --green: #10b981;
+      --green-light: #34d399;
+      --gold: #f59e0b;
+      --cream: #fdfaf5;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --white: #ffffff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--text); overflow-x:hidden; }
+
+    /* NAVBAR */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      background:rgba(10,22,40,0.97); backdrop-filter:blur(12px);
+      padding:0 40px; height:64px;
+      display:flex; align-items:center; justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .nav-logo-icon { width:32px; height:32px; }
+    .nav-logo-text { font-family:'Fraunces',serif; font-size:1.3rem; color:#fff; }
+    .nav-logo-text span { color:var(--green-light); }
+    .nav-links { display:flex; align-items:center; gap:28px; }
+    .nav-links a { color:#94a3b8; font-size:0.875rem; text-decoration:none; transition:color 0.2s; }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta { background:var(--green); color:#fff !important; padding:9px 22px; border-radius:8px; font-weight:600; transition:all 0.2s !important; }
+    .nav-cta:hover { background:var(--green-light) !important; transform:translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height:100vh;
+      background:var(--navy);
+      display:flex; align-items:center;
+      position:relative; overflow:hidden;
+      padding:100px 40px 80px;
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(26,86,219,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 20% 80%, rgba(16,185,129,0.08) 0%, transparent 50%);
+    }
+    .hero-stripes { position:absolute; right:0; top:0; bottom:0; width:6px; background:repeating-linear-gradient(180deg,#dc2626 0px,#dc2626 40px,#fff 40px,#fff 80px); opacity:0.15; }
+    .hero-content { position:relative; z-index:2; max-width:1100px; margin:0 auto; width:100%; }
+    .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.25); color:var(--green-light); padding:5px 14px; border-radius:20px; font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:24px; }
+    .hero-title { font-family:'Fraunces',serif; font-size:clamp(2.6rem,4.5vw,3.8rem); color:#f1f5f9; line-height:1.1; margin-bottom:20px; letter-spacing:-0.02em; }
+    .hero-title .highlight { color:var(--green-light); font-style:italic; }
+    .hero-tagline { font-size:1.1rem; color:#94a3b8; line-height:1.75; margin-bottom:36px; max-width:480px; }
+    .hero-tagline strong { color:#e2e8f0; font-weight:500; }
+    .hero-cta-group { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
+    .btn-primary { background:var(--green); color:#fff; padding:14px 32px; border-radius:10px; font-weight:700; font-size:1rem; text-decoration:none; transition:all 0.25s; display:inline-block; box-shadow:0 4px 20px rgba(16,185,129,0.3); }
+    .btn-primary:hover { background:#0d9f74; transform:translateY(-2px); box-shadow:0 8px 30px rgba(16,185,129,0.4); color:#fff; }
+    .btn-secondary { background:transparent; color:#cbd5e1; border:1px solid rgba(255,255,255,0.15); padding:14px 28px; border-radius:10px; font-weight:500; font-size:1rem; text-decoration:none; transition:all 0.25s; display:inline-block; }
+    .btn-secondary:hover { border-color:rgba(255,255,255,0.35); color:#fff; }
+    .hero-trust { display:flex; gap:20px; flex-wrap:wrap; }
+    .trust-item { display:flex; align-items:center; gap:7px; font-size:0.82rem; color:#64748b; }
+    .trust-dot { width:6px; height:6px; border-radius:50%; background:var(--green); }
+
+    /* LOGO CARD */
+    .hero-visual { display:flex; justify-content:center; align-items:center; }
+    .logo-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:24px; padding:48px 40px; text-align:center; backdrop-filter:blur(10px); box-shadow:0 24px 60px rgba(0,0,0,0.3); width:320px; }
+    .logo-mark { width:100px; height:100px; margin:0 auto 20px; }
+    .logo-name { font-family:'Fraunces',serif; font-size:2.2rem; color:#f1f5f9; letter-spacing:-0.02em; margin-bottom:6px; }
+    .logo-name span { color:var(--green-light); }
+    .logo-sub { font-size:0.78rem; color:#64748b; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:28px; }
+    .logo-divider { width:40px; height:2px; background:var(--green); margin:0 auto 20px; border-radius:1px; }
+    .logo-tagline-small { font-size:0.85rem; color:#94a3b8; font-style:italic; line-height:1.6; }
+
+    /* STATS BAR */
+    .stats-bar { background:var(--navy-mid); border-top:1px solid rgba(255,255,255,0.06); border-bottom:1px solid rgba(255,255,255,0.06); padding:32px 40px; }
+    .stats-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .stat-item { text-align:center; }
+    .stat-num { font-family:'Fraunces',serif; font-size:2.2rem; color:var(--green-light); line-height:1; margin-bottom:4px; }
+    .stat-label { font-size:0.78rem; color:#64748b; }
+
+    /* SECTIONS */
+    section { padding:100px 0; }
+    .section-inner { max-width:1100px; margin:0 auto; padding:0 40px; }
+    .section-eyebrow { font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; }
+    .section-title { font-family:'Fraunces',serif; font-size:2.2rem; color:var(--text); margin-bottom:8px; line-height:1.2; }
+    .section-sub { font-size:1rem; color:var(--muted); max-width:500px; line-height:1.7; margin-bottom:56px; }
+
+    /* SERVICES */
+    .services { background:var(--cream); }
+    .cards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .service-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:32px 28px; position:relative; transition:all 0.25s; }
+    .service-card:hover { transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.08); border-color:var(--blue); }
+    .service-card.featured { background:var(--navy); border-color:var(--green); box-shadow:0 8px 40px rgba(16,185,129,0.15); }
+    .service-card.featured:hover { box-shadow:0 20px 60px rgba(16,185,129,0.2); }
+    .popular-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--green); color:#fff; font-size:0.7rem; font-weight:700; padding:3px 14px; border-radius:20px; letter-spacing:0.08em; text-transform:uppercase; white-space:nowrap; }
+    .card-icon { width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; font-size:1.3rem; }
+    .card-icon.blue { background:rgba(26,86,219,0.1); }
+    .card-icon.green { background:rgba(16,185,129,0.15); }
+    .card-icon.gold { background:rgba(245,158,11,0.1); }
+    .card-name { font-family:'Fraunces',serif; font-size:1.2rem; margin-bottom:6px; }
+    .service-card.featured .card-name { color:#f1f5f9; }
+    .card-price { font-size:2rem; font-weight:700; color:var(--blue); margin-bottom:4px; line-height:1; }
+    .service-card.featured .card-price { color:var(--green-light); }
+    .card-price-note { font-size:0.75rem; color:var(--muted); margin-bottom:20px; }
+    .service-card.featured .card-price-note { color:#64748b; }
+    .card-divider { height:1px; background:var(--border); margin-bottom:20px; }
+    .service-card.featured .card-divider { background:rgba(255,255,255,0.1); }
+    .card-features { list-style:none; margin-bottom:28px; }
+    .card-features li { font-size:0.875rem; color:var(--muted); padding:5px 0; display:flex; align-items:flex-start; gap:9px; line-height:1.5; }
+    .service-card.featured .card-features li { color:#94a3b8; }
+    .card-features li::before { content:'✓'; color:var(--green); font-weight:700; font-size:0.85rem; flex-shrink:0; margin-top:1px; }
+    .card-btn { display:block; text-align:center; padding:12px; border-radius:10px; font-weight:700; font-size:0.9rem; text-decoration:none; transition:all 0.2s; background:rgba(26,86,219,0.08); color:var(--blue); border:1px solid rgba(26,86,219,0.2); }
+    .card-btn:hover { background:var(--blue); color:#fff; }
+    .card-btn.green-btn { background:var(--green); color:#fff; border-color:var(--green); box-shadow:0 4px 16px rgba(16,185,129,0.3); }
+    .card-btn.green-btn:hover { background:#0d9f74; color:#fff; }
+
+    /* HOW IT WORKS */
+    .how { background:var(--navy); }
+    .how .section-eyebrow { color:var(--green-light); }
+    .how .section-title { color:#f1f5f9; }
+    .how .section-sub { color:#64748b; }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; margin-top:56px; position:relative; }
+    .steps::before { content:''; position:absolute; top:28px; left:10%; right:10%; height:1px; background:rgba(255,255,255,0.08); }
+    .step { text-align:center; position:relative; }
+    .step-num { width:56px; height:56px; border-radius:50%; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); color:var(--green-light); font-family:'Fraunces',serif; font-size:1.3rem; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; position:relative; z-index:2; }
+    .step-title { font-weight:700; font-size:0.95rem; color:#e2e8f0; margin-bottom:8px; }
+    .step-desc { font-size:0.82rem; color:#64748b; line-height:1.65; }
+
+    /* TESTIMONIALS */
+    .testimonials { background:var(--cream); }
+    .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+    .testi-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:28px; }
+    .testi-stars { color:var(--gold); font-size:0.85rem; margin-bottom:14px; letter-spacing:2px; }
+    .testi-text { font-size:0.9rem; color:var(--muted); line-height:1.75; margin-bottom:20px; font-style:italic; }
+    .testi-author { font-weight:700; font-size:0.85rem; color:var(--text); }
+    .testi-detail { font-size:0.75rem; color:var(--muted); }
+
+    /* FAQ */
+    .faq { background:#f1f5fb; }
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:56px; }
+    .faq-item { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:24px 28px; }
+    .faq-q { font-weight:700; font-size:0.93rem; color:var(--text); margin-bottom:10px; }
+    .faq-a { font-size:0.875rem; color:var(--muted); line-height:1.7; }
+
+    /* CTA BANNER */
+    .cta-banner { background:var(--navy-mid); padding:80px 40px; text-align:center; border-top:1px solid rgba(255,255,255,0.06); }
+    .cta-banner h2 { font-family:'Fraunces',serif; font-size:2.4rem; color:#f1f5f9; margin-bottom:14px; }
+    .cta-banner p { color:#64748b; font-size:1rem; margin-bottom:36px; }
+
+    /* FOOTER */
+    footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.06); padding:32px 40px; text-align:center; color:#475569; font-size:0.82rem; }
+    footer a { color:#475569; text-decoration:none; }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav { padding:0 20px; }
+      .nav-links { display:none; }
+      .hero { padding:90px 20px 60px; }
+      .hero-grid { grid-template-columns:1fr; gap:40px; }
+      .hero-visual { display:none; }
+      .stats-inner { grid-template-columns:repeat(2,1fr); }
+      .cards-grid { grid-template-columns:1fr; }
+      .steps { grid-template-columns:repeat(2,1fr); }
+      .steps::before { display:none; }
+      .testi-grid { grid-template-columns:1fr; }
+      .faq-grid { grid-template-columns:1fr; }
+      .section-inner { padding:0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="8" fill="rgba(16,185,129,0.15)"/>
+        <path d="M8 16.5L13.5 22L24 11" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="16" r="11" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+      </svg>
+      <span class="nav-logo-text">Visto<span>Certo</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#contato" class="nav-cta">Agendar consulta</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-stripes"></div>
+    <div class="hero-content">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow"><span>✓</span> Especialista em visto americano</div>
+          <h1 class="hero-title">Seu visto americano,<br>do jeito <span class="highlight">certo.</span></h1>
+          <p class="hero-tagline">Processo completo, do preenchimento do DS-160 até a preparação para a entrevista. <strong>Sem erro, sem retrabalho, sem surpresa.</strong></p>
+          <div class="hero-cta-group">
+            <a href="#contato" class="btn-primary">Quero meu visto agora →</a>
+            <a href="#servicos" class="btn-secondary">Ver pacotes</a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item"><div class="trust-dot"></div>100% online via WhatsApp</div>
+            <div class="trust-item"><div class="trust-dot"></div>Atendimento em português</div>
+            <div class="trust-item"><div class="trust-dot"></div>Pagamento via PIX ou cartão</div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="logo-card">
+            <svg class="logo-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="rgba(16,185,129,0.2)" stroke-width="1.5"/>
+              <circle cx="50" cy="50" r="38" fill="rgba(16,185,129,0.08)"/>
+              <rect x="28" y="22" width="44" height="56" rx="5" fill="rgba(26,86,219,0.25)" stroke="rgba(26,86,219,0.5)" stroke-width="1.5"/>
+              <line x1="35" y1="45" x2="65" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="35" y1="52" x2="58" y2="52" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="35" y1="59" x2="55" y2="59" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="35" y="27" width="16" height="13" rx="2" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+              <circle cx="65" cy="65" r="16" fill="#0a1628"/>
+              <circle cx="65" cy="65" r="14" fill="rgba(16,185,129,0.9)"/>
+              <path d="M58 65L63 70.5L72 59" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="logo-name">Visto<span>Certo</span></div>
+            <div class="logo-sub">Consultoria de vistos EUA</div>
+            <div class="logo-divider"></div>
+            <div class="logo-tagline-small">"Seu visto americano,<br>do jeito certo."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Taxa de aprovação</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Atendimento em português</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Tipos de visto (B1/B2, F1, J1)</div></div>
+      <div class="stat-item"><div class="stat-num">48h</div><div class="stat-label">Tempo de resposta</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="servicos">
+    <div class="section-inner">
+      <div class="section-eyebrow">Pacotes</div>
+      <h2 class="section-title">Escolha o suporte<br>que você precisa</h2>
+      <p class="section-sub">Desde uma revisão rápida até acompanhamento completo até a decisão do visto.</p>
+      <div class="cards-grid">
+        <div class="service-card">
+          <div class="card-icon blue">📋</div>
+          <div class="card-name">Revisão Express</div>
+          <div class="card-price">R$497</div>
+          <div class="card-price-note">pagamento único via PIX ou cartão</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Revisão completa do seu DS-160</li>
+            <li>Checklist de documentos personalizado</li>
+            <li>Call de 30 minutos para dúvidas</li>
+            <li>Feedback por escrito em 48h</li>
+          </ul>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20VistoCerto%20e%20quero%20saber%20mais%20sobre%20a%20Revis%C3%A3o%20Express." target="_blank" class="card-btn">Começar →</a>
+        </div>
+        <div class="service-card featured">
+          <div class="popular-badge">⭐ Mais popular</div>
+          <div class="card-icon green">🗺️</div>
+          <div class="card-name">Processo Completo</div>
+          <div class="card-price">R$1.490</div>
+          <div class="card-price-note">pagamento único via PIX ou cartão</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Preenchimento do DS-160 com você</li>
+            <li>Checklist financeiro e documental</li>
+            <li>Preparação completa para entrevista</li>
+            <li>Simulação de perguntas da entrevista</li>
+            <li>Revisão final antes do agendamento</li>
+          </ul>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20VistoCerto%20e%20quero%20o%20Processo%20Completo." target="_blank" class="card-btn green-btn">Quero esse →</a>
+        </div>
+        <div class="service-card">
+          <div class="card-icon gold">🏆</div>
+          <div class="card-name">VIP — Até Aprovar</div>
+          <div class="card-price">R$2.490</div>
+          <div class="card-price-note">pagamento único via PIX ou cartão</div>
+          <div class="card-divider"></div>
+          <ul class="card-features">
+            <li>Tudo do Processo Completo</li>
+            <li>Suporte via WhatsApp ilimitado</li>
+            <li>Acompanhamento até a decisão final</li>
+            <li>Revisão de caso em caso de negativa</li>
+            <li>Prioridade de resposta em 12h</li>
+          </ul>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20VistoCerto%20e%20quero%20o%20pacote%20VIP." target="_blank" class="card-btn">Começar →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="como-funciona">
+    <div class="section-inner">
+      <div class="section-eyebrow">Processo</div>
+      <h2 class="section-title">Como funciona</h2>
+      <p class="section-sub">Do primeiro contato até o visto na mão — tudo pelo WhatsApp, sem sair de casa.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Agende sua consulta</div>
+          <div class="step-desc">Clique no botão, escolha um horário e me conta sua situação em 5 minutos.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Análise do seu caso</div>
+          <div class="step-desc">Avaliamos seu perfil e montamos a estratégia certa para o seu visto.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">Documentação e DS-160</div>
+          <div class="step-desc">Preenchemos tudo juntos, organizamos seus documentos e preparamos para a entrevista.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-title">Visto aprovado ✓</div>
+          <div class="step-desc">Você vai para a entrevista preparado e confiante.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="depoimentos">
+    <div class="section-inner">
+      <div class="section-eyebrow">Depoimentos</div>
+      <h2 class="section-title">Quem já passou pelo processo</h2>
+      <p class="section-sub">Resultados reais de pessoas reais.</p>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Já tinha tentado sozinha e negado. Dessa vez, com a ajuda da Gabi, fui super preparada e aprovada. Valeu cada centavo."</p>
+          <div class="testi-author">Camila R.</div>
+          <div class="testi-detail">Visto B2 · São Paulo, SP</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"O processo parecia muito complicado, mas ela explicou tudo passo a passo. Me sentei na entrevista sem nervoso nenhum. Aprovado!"</p>
+          <div class="testi-author">Felipe M.</div>
+          <div class="testi-detail">Visto F1 · Rio de Janeiro, RJ</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Super profissional, atendimento rápido e resultado garantido. Recomendei para toda minha família que quer viajar para os EUA."</p>
+          <div class="testi-author">Mariana S.</div>
+          <div class="testi-detail">Visto B1/B2 · Campinas, SP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="section-inner">
+      <div class="section-eyebrow">Dúvidas frequentes</div>
+      <h2 class="section-title">Perguntas comuns</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">Você garante aprovação do visto?</div>
+          <div class="faq-a">Nenhum consultor pode garantir aprovação — a decisão final é do consulado americano. O que garantimos é que você vai chegar na entrevista com a documentação certa e bem preparada, maximizando suas chances.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Qual tipo de visto você ajuda?</div>
+          <div class="faq-a">Trabalhamos com visto de turismo (B1/B2), visto de estudante (F1) e visto de intercâmbio (J1). Para vistos de trabalho ou residência permanente, recomendamos um advogado de imigração.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">O atendimento é presencial ou online?</div>
+          <div class="faq-a">100% online via WhatsApp e videochamada. Atendo brasileiros no Brasil e no exterior, sem necessidade de deslocamento.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Como funciona o pagamento?</div>
+          <div class="faq-a">Aceitamos pagamento via PIX, transferência bancária ou cartão de crédito em reais. O pagamento é feito antes do início do processo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Meu visto foi negado antes. Posso tentar de novo?</div>
+          <div class="faq-a">Sim. Uma negativa anterior não impede nova tentativa. O importante é entender o motivo da negativa e montar uma estratégia diferente. Isso é exatamente o que fazemos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Quanto tempo leva o processo?</div>
+          <div class="faq-a">Em média, preparamos tudo em 3 a 7 dias úteis após o primeiro contato. O agendamento no consulado depende da disponibilidade de datas na sua cidade.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" id="contato">
+    <h2>Pronto para garantir seu visto?</h2>
+    <p>Agende uma consulta gratuita de 15 minutos e veja como podemos te ajudar.</p>
+    <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20VistoCerto%20e%20quero%20saber%20mais%20sobre%20o%20processo%20de%20visto." class="btn-primary" target="_blank">💬 Falar no WhatsApp agora</a>
+  </section>
+
+  <footer>
+    <p>© 2026 VistoCerto · Consultoria de Vistos Americanos · <a href="mailto:gabisalviatti@gmail.com">gabisalviatti@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>
