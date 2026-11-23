@@ -14,6 +14,18 @@
 <footer class="py-4 text-center text-white" style="background:var(--navy)"><div class="container"><span class="brand">Visto<span class="accent">Certo</span></span><p class="smallprint mt-2">Atendimento: segunda a sexta, das 9h às 17h (horário de Brasília).</p><p class="smallprint mt-2 mb-0">Assessoria independente para vistos americanos. Nenhuma aprovação é garantida.</p></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+// Mensagens de validação em português, inclusive em navegadores configurados em inglês.
+const leadForm=document.getElementById('leadForm');
+leadForm.querySelectorAll('[required]').forEach(field=>{
+ field.addEventListener('invalid',()=>{
+  if(field.validity.valueMissing){
+   field.setCustomValidity(field.type==='checkbox'?'Confirme sua autorização para continuar.':field.tagName==='SELECT'?'Por favor, selecione uma opção para continuar.':'Por favor, preencha este campo para continuar.');
+  }
+ });
+ const clear=()=>field.setCustomValidity('');
+ field.addEventListener('input',clear);
+ field.addEventListener('change',clear);
+});
 const serviceField=document.getElementById('service');
 const renewalFields=document.getElementById('renewalFields');
 const expiryField=document.getElementById('expiry');
