@@ -177,16 +177,20 @@
       .section-inner { padding:0 20px; }
     }
   </style>
-<link rel="icon" href="brand.svg" type="image/svg+xml"/><style>.nav-logo-text,.logo-name{font-family:DM Sans,sans-serif;font-weight:700}.hero-stripes{display:none}.hero-tagline,.trust-item,.step-desc,.how .section-sub,.logo-sub,.cta-banner p{color:#cbd5e1}.btn-primary,.nav-cta,.card-btn.green-btn{background:#1F6B4F}.hero-title .highlight{font-style:normal}</style></head>
+<link rel="icon" href="brand.svg" type="image/svg+xml"/><style>.nav-logo-text,.logo-name{font-family:DM Sans,sans-serif;font-weight:700}.hero-stripes{display:none}.hero-tagline,.trust-item,.step-desc,.how .section-sub,.logo-sub,.cta-banner p{color:#cbd5e1}.btn-primary,.nav-cta,.card-btn.green-btn{background:#1F6B4F}.hero-title .highlight{font-style:normal}</style><style>
+:root{--navy:#102C23;--navy-mid:#174638;--green:#1F6B4F;--blue:#1F6B4F;--green-light:#A9DFBF;--cream:#F4F6F3;--text:#102C23;--muted:#52645b;--border:#dbe5dc}
+html{scroll-behavior:smooth;scroll-padding-top:90px}nav{background:#102C23; height:76px;padding:0 max(24px,calc((100vw - 1160px)/2));border-bottom:1px solid #ffffff20}.nav-logo-icon{width:42px;height:42px}.nav-logo-text{font-size:1.45rem;letter-spacing:-.05em}.nav-links a{color:#e2eee5}.nav-cta:hover{color:#102C23!important}.hero{min-height:660px;padding:150px 40px 85px;background:linear-gradient(120deg,#102C23,#174638)}.hero::before{background:radial-gradient(ellipse at 85% 30%,#a9dfbf18,transparent 65%)}.hero-title,.section-title,.cta-banner h2,.card-name{font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:-.045em}.hero-title{font-size:clamp(2.8rem,5vw,4.6rem);line-height:1.03}.hero-eyebrow{background:#a9dfbf15;border-color:#a9dfbf44}.logo-card{background:#F4F6F3;border:1px solid #fff;width:min(100%,420px);padding:54px 28px;border-radius:30px;box-shadow:0 25px 60px #0002}.logo-mark{width:125px;height:125px}.logo-name{color:#102C23;font-size:2.7rem;letter-spacing:-.06em}.logo-sub,.logo-tagline-small{color:#52645b}.logo-tagline-small{font-style:normal;font-size:1rem}.brand-note{margin-top:25px;padding-top:18px;border-top:1px solid #dbe5dc;font-size:.8rem;color:#52645b}.section-inner,.hero-content{max-width:1160px}.section-title{font-size:clamp(2rem,3.5vw,3rem)}.service-card{border-radius:24px;display:flex;flex-direction:column;box-shadow:0 8px 25px #102c2308}.card-btn{margin-top:auto;background:#e8f2ea;border-color:#dbe5dc}.card-icon.blue,.card-icon.gold,.card-icon.green{background:#a9dfbf33}.service-card.featured .card-price-note,.service-card.featured .card-features li{color:#d9e9df}.service-card.featured .card-features li::before{color:#A9DFBF}.faq{background:#e8f0e9}.faq-item{border-radius:18px}.btn-primary,.nav-cta,.card-btn.green-btn{background:#1F6B4F;box-shadow:none}.btn-primary:hover,.card-btn.green-btn:hover{background:#174638}.hero .btn-primary{background:#A9DFBF;color:#102C23}.hero .btn-primary:hover{background:#d1efda;color:#102C23}.menu-toggle{display:none;background:transparent;border:1px solid #a9dfbf66;border-radius:8px;color:white;padding:7px 12px;font-size:22px}a:focus-visible,button:focus-visible{outline:3px solid #A9DFBF;outline-offset:4px}footer p{margin:8px 0;line-height:1.6}
+@media(max-width:768px){nav{padding:0 20px;height:70px}.menu-toggle{display:block}.nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;background:#102C23;padding:24px;flex-direction:column;align-items:stretch;gap:20px}.hero{padding:110px 20px 55px;min-height:auto}.hero-grid{gap:25px}.hero-visual{display:flex}.logo-card{padding:25px;width:100%}.logo-mark{width:70px;height:70px;margin-bottom:8px}.logo-name{font-size:2rem}.logo-sub{margin-bottom:12px}.hero-cta-group{margin-bottom:25px}.hero-title{font-size:2.8rem}section{padding:65px 0}.section-sub{margin-bottom:35px}.cta-banner{padding:55px 20px}.steps{gap:20px}}
+</style></head>
 <body>
 
   <!-- NAVBAR -->
   <nav>
     <a href="#" class="nav-logo">
       <img class="nav-logo-icon" src="brand.svg" alt=""/>
-      <span class="nav-logo-text">Visto<span>Certo</span></span>
+      <span class="nav-logo-text">Visto Certo</span>
     </a>
-    <div class="nav-links">
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">☰</button><div class="nav-links" id="nav-links">
       <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
       
@@ -215,17 +219,7 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="logo-card">
-            <img class="logo-mark" src="brand.svg" alt=""/>
-            <div class="logo-name">Visto<span>Certo</span></div>
-            <div class="logo-sub">Consultoria de vistos EUA</div>
-            <div class="logo-divider"></div>
-            <div class="logo-tagline-small">"Seu visto americano,<br>do jeito certo."</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="logo-card"><img class="logo-mark" src="brand.svg" alt="Visto Certo"><div class="logo-name">Visto Certo</div><div class="logo-sub">Assessoria de visto americano</div><div class="logo-divider"></div><div class="logo-tagline-small">Seu próximo destino começa aqui.</div><div class="brand-note">B1/B2 · Primeiro visto e renovação</div></div></div></div></div></section>
 
   <!-- STATS -->
   <!-- SERVICES -->
@@ -247,7 +241,7 @@
             <li>Call de 30 minutos para dúvidas</li>
             <li>Feedback por escrito em 48h</li>
           </ul>
-          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto Certo%20e%20quero%20saber%20mais%20sobre%20a%20Revis%C3%A3o%20DS-160." target="_blank" class="card-btn">Começar →</a>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto%20Certo%20e%20quero%20saber%20mais%20sobre%20a%20Revis%C3%A3o%20DS-160." target="_blank" class="card-btn">Começar →</a>
         </div>
         <div class="service-card featured">
           <div class="popular-badge">Primeiro visto</div>
@@ -263,7 +257,7 @@
             <li>Simulação de perguntas da entrevista</li>
             <li>Revisão final antes do agendamento</li>
           </ul>
-          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto Certo%20e%20quero%20o%20primeiro%20visto." target="_blank" class="card-btn green-btn">Quero esse →</a>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto%20Certo%20e%20quero%20o%20primeiro%20visto." target="_blank" class="card-btn green-btn">Quero esse →</a>
         </div>
         <div class="service-card">
           <div class="card-icon gold">🏆</div>
@@ -272,13 +266,9 @@
           <div class="card-price-note">valor da assessoria · taxas consulares à parte</div>
           <div class="card-divider"></div>
           <ul class="card-features">
-            <li>Tudo do Processo Completo</li>
-            <li>Suporte via WhatsApp ilimitado</li>
-            <li>Acompanhamento até a decisão final</li>
-            <li>Revisão de caso em caso de negativa</li>
-            <li>Prioridade de resposta em 12h</li>
+            <li>Orientação sobre requisitos de renovação</li><li>Revisão das informações do DS-160</li><li>Orientação sobre as etapas aplicáveis</li>
           </ul>
-          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto Certo%20e%20quero%20a%20renova%C3%A7%C3%A3o." target="_blank" class="card-btn">Começar →</a>
+          <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto%20Certo%20e%20quero%20a%20renova%C3%A7%C3%A3o." target="_blank" class="card-btn">Começar →</a>
         </div>
       </div>
     </div>
@@ -353,10 +343,10 @@
   <section class="cta-banner" id="contato">
     <h2>Pronto para iniciar seu processo?</h2>
     <p>Agende uma consulta gratuita de 15 minutos e veja como podemos te ajudar.</p>
-    <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto Certo%20e%20quero%20saber%20mais%20sobre%20o%20processo%20de%20visto." class="btn-primary" target="_blank">💬 Falar no WhatsApp agora</a>
+    <a href="https://wa.me/5519992355476?text=Oi!%20Vim%20pelo%20site%20Visto%20Certo%20e%20quero%20saber%20mais%20sobre%20o%20processo%20de%20visto." class="btn-primary" target="_blank">💬 Falar no WhatsApp agora</a>
   </section>
 
   <footer style="color:#e2e8f0"><p>© 2026 Visto Certo · Assessoria privada e independente, sem vínculo com o governo americano.</p><p>Taxas consulares não incluídas. A decisão é exclusiva das autoridades consulares.</p><p>Atendimento: segunda a sexta, 9h às 17h. <a style="color:#A9DFBF" href="#privacidade">Informações de privacidade</a></p></footer>
 
-</body>
+<script>const menuButton=document.querySelector('.menu-toggle'),menuLinks=document.querySelector('#nav-links');menuButton.addEventListener('click',()=>{const open=menuLinks.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));});menuLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menuLinks.classList.remove('open');menuButton.setAttribute('aria-expanded','false');}));</script></body>
 </html>
